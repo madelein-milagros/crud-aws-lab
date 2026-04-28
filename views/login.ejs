@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🔐 Login - Lab AWS</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 380px; margin: 60px auto; padding: 20px; background: #f5f5f5; }
+    .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    input, button { width: 100%; padding: 10px; margin: 6px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+    button { background: #0066cc; color: #fff; border: none; cursor: pointer; font-weight: bold; }
+    button:hover { background: #0052a3; }
+    .msg { padding: 8px; margin: 10px 0; border-radius: 4px; font-size: 14px; }
+    .error { background: #ffe5e5; color: #b00020; }
+    .success { background: #e5ffe5; color: #006600; }
+    hr { border: 0; border-top: 1px solid #ddd; margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2 style="text-align:center; margin-top:0;">Iniciar Sesión</h2>
+    <% if (message) { %>
+      <p class="msg <%= message.includes('exit') ? 'success' : 'error' %>"><%= message %></p>
+    <% } %>
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="Usuario" required>
+      <input type="password" name="password" placeholder="Contraseña" required>
+      <button type="submit">Entrar</button>
+    </form>
+
+    <hr>
+    <h3 style="text-align:center; margin-bottom:5px;">¿No tienes cuenta?</h3>
+    <form action="/register" method="POST">
+      <input type="text" name="reg_username" placeholder="Nuevo usuario" required>
+      <input type="password" name="reg_password" placeholder="Nueva contraseña" required>
+      <button type="submit" style="background:#28a745;">Registrarse</button>
+    </form>
+  </div>
+</body>
+</html>
